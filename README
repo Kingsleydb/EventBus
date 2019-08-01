@@ -1,0 +1,35 @@
+Program Description:
+Create a event bus system that can add and invoke events with associated
+callback functions. Invoked functions are to clear the event bus of all
+events with the same name.
+
+What I learned: 
+I learned about declaration circularity (forward definitions) and had
+practice using function pointers.
+
+_______________________________________________________________________________
+README for event bus system. Uses vectors from standard library. 
+
+How to compile: 
+    clang++ -Wall -Wextra -std=c++11 main.cpp EventQueue.cpp 
+
+This implementation uses a vector as the data structure that stores event 
+structs. An event is represented as a name and callback pointer. To add an 
+event to the event queue takes O(1) time, and to invoke a function takes O(n) 
+time. The add and invoke functions are class functions defined in the 
+EventQueue class.
+
+An alternative structure could use a forward_list from the standard library or 
+a linked-list that maintains pointers at the beginning and end of the list 
+instead of a vector. This would also cost O(1) for adding, and invoking with 
+the same cancellation process would cost O(n). 
+
+I chose to use the vector implementation because I thought the code would be 
+cleaner, more readable, and with fewer edge cases. 
+
+Future Optimizations: Instead of a vector, one could use an unordered_map
+from the standard library, if the order of the events in the queue does
+not matter. This would give O(1) adding and O(1) invoking, but the cancelling 
+process would require further thought because of the multiple values mapped 
+to a single key. If order does matter, this could also be implemented with a 
+map, which would give O(log n) for add and invoke. 
