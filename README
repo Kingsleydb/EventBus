@@ -1,7 +1,8 @@
 Program Description:
 Create a event bus system that can add and invoke events with associated
 callback functions. Invoked functions are to clear the event bus of all
-events with the same name.
+events with the same name. The Event bus must be cleared from the stored callback
+function.
 
 What I learned: 
 I learned about declaration circularity (forward definitions) and had
